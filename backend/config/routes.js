@@ -9,4 +9,7 @@ module.exports = function(server) {
     //rotas da Api
     const billingCycleService = require('../app/billingCycle/billiCycleService')
     billingCycleService.register(router, '/billingCycles')
+
+    const billingSummaryService = require('../app/billingSummary/billingSummaryService')
+    router.route('/billingSummary').get(billingSummaryService.getSummary)
 }
