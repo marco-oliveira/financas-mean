@@ -36,6 +36,17 @@
             vm.billingCycle = billingCycle
             tabs.show(vm, { tabDelete: true })
         }
+
+        vm.delete = function(){
+            const urlDelete = `${url}/${vm.billingCycle._id}`
+            $http.delete(urlDelete, vm.billingCycle)
+                .then(function (response) {
+                    vm.reflesh()
+                    messages.addSuccess('Operação Realizada com Sucesso.')
+            }).catch(function (response) {
+                messages.addError(response.data.errors)
+            })
+        }
         vm.reflesh()
     }
 })()
